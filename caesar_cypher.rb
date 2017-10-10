@@ -9,14 +9,16 @@ def caesarcypher(string, key)
         b = a + key
         c = b.chr
        puts "lettre : #{word[i]} -> #{a} -> #{b} -> #{c} "
+       #faire un .join() pour concatener dans un string et pouvoir reafficher le mot 
       end
     end
   end
 end
 
-
-
 caesarcypher("Hello la mif!!", 5)
+
+caesarcypher(caesarcypher("Hello la mif!!", 5),(-5))
+
 
 # a = gets.chomp
 
