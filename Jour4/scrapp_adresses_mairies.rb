@@ -4,12 +4,14 @@ require 'open-uri'
 require 'pry'
 
 
-
+#TODO faire un hash pour ranger les valeurs
+#TODO faire une exception pour les erreurs
 
 def open_link
 
   scrapped = []
 
+  mail = []
 
   landing_page = Nokogiri::HTML(open("http://annuaire-des-mairies.com/val-d-oise.html"))
 
@@ -19,22 +21,27 @@ def open_link
 	links << link_end
   end
 
+
 links.each do |ville|
   page = Nokogiri::HTML(open("#{ville}"))
 
+  error = [] # on doit  vider le tableau à chaque boucle
   text_array = page.css('td[class = style27]').text.split
-  mail = []
 
   text_array.each do |element|
-  mail << element if element.include?("@")
-  scrapped << element if element.include?("@")
+    adress = element if element.include?("@")
+    mail << adress
+    scrapped << adress
+    error << adress # dqsdsqd
   end
-end
+
+  if error.size == 0  # rezrezrez
+    scrapped << "Unavailable"  # fdscsdd
+  end
   puts scrapped
 
-
 end
-
+end
 
 
 
