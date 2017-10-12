@@ -1,0 +1,6 @@
+#Gemfile
+
+gem'rubygems'
+gem 'nokogiri'
+gem 'open-uri'
+gem 'pry'
